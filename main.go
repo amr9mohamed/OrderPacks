@@ -11,7 +11,7 @@ func main() {
 	s := service.NewPacksManager(r)
 	server := http.NewServer(s)
 	engine := server.InitServer()
-	if err := engine.Run("localhost:8080"); err != nil {
+	if err := engine.Run(":8080"); err != nil {
 		return
 	}
 }
