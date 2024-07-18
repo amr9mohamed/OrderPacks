@@ -1,6 +1,6 @@
 package service
 
-type Service interface {
+type PackageService interface {
 	HandleOrder(order int) map[int]int
 	SetPackageSizes(newSizes []int)
 }

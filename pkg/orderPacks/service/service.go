@@ -24,7 +24,6 @@ func (p *PacksManager) HandleOrder(orderSize int) map[int]int {
 	output := make(map[int]int)
 
 	packageSizes := p.Repo.GetAllPackageSizes()
-
 	smallestSize := packageSizes[len(packageSizes)-1]
 
 	for _, ps := range packageSizes {
