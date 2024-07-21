@@ -2,6 +2,7 @@ package service
 
 import (
 	"orderPacks/pkg/orderPacks/repository"
+	"sort"
 )
 
 type PacksManager struct {
@@ -24,6 +25,7 @@ func (p *PacksManager) HandleOrder(orderSize int) map[int]int {
 	output := make(map[int]int)
 
 	packageSizes := p.Repo.GetAllPackageSizes()
+	sort.Sort(sort.Reverse(sort.IntSlice(packageSizes)))
 	smallestSize := packageSizes[len(packageSizes)-1]
 
 	for _, ps := range packageSizes {

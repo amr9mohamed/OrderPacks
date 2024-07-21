@@ -17,7 +17,7 @@ func TestSetPackageSizes(t *testing.T) {
 		s.SetPackageSizes([]int{30, 10, 20})
 
 		// Assert
-		assert.Equal(t, r.GetAllPackageSizes(), []int{30, 20, 10})
+		assert.Equal(t, r.GetAllPackageSizes(), []int{30, 10, 20})
 	})
 }
 
