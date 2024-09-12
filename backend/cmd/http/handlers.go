@@ -1,6 +1,7 @@
 package http
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"orderPacks/pkg/orderPacks/service"
@@ -23,6 +24,9 @@ type SetPackageSizesRequest struct {
 
 func (s *Server) InitServer() *gin.Engine {
 	router := gin.Default()
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"http://localhost:3000"}
+	router.Use(cors.New(config))
 	router.GET("/handleOrder/:orderSize", s.HandleOrder)
 	router.POST("/setPackageSizes", s.SetPackageSizes)
 	return router

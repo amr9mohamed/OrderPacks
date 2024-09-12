@@ -1,4 +1,35 @@
-FROM ubuntu:latest
-LABEL authors="amrmohamed"
+services:
+  app:
+    container_name: go_app
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    restart: on-failure
+    volumes:
+      - api:/usr/src/app/
+    networks:
+      - backend
+  client:
+    container_name: react_app
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    restart: on-failure
+    volumes:
+      - ./frontend/src:/app/src
+      - /app/node_modules
+    depends_on:
+      - app
 
-ENTRYPOINT ["top", "-b"]
+volumes:
+  api:
+  database_postgres:
+
+# Networks to be created to facilitate communication between containers
+networks:
+  backend:
+    driver: bridge
