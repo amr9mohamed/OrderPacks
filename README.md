@@ -1,8 +1,9 @@
 # OrderPacks
 Repartners Software Engineer Challenge
-# Start the app
+# Start the backed app
 Execute the following command in a terminal to start the app in a containerized environment
 ```
+cd backend
 make start
 ```
 In a new terminal session run on of the following 2 requests:
@@ -21,3 +22,11 @@ curl http://localhost:8080/setPackageSizes \
     --request "POST" \
     --data '{"sizes":[250,500,1000,2000,5000]}'
 ```
+
+
+## To enable UI
+run from the root of the project
+```aiignore
+docker compose build && docker compose up
+```
+![img.png](img.png)
